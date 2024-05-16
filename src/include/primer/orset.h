@@ -1,8 +1,9 @@
 #pragma once
 
+#include <map>
+#include <set>
 #include <string>
 #include <vector>
-
 namespace bustub {
 
 /** @brief Unique ID type. */
@@ -59,7 +60,22 @@ class ORSet {
   auto ToString() const -> std::string;
 
  private:
-  // TODO(student): Add your private memeber variables to represent ORSet.
+  /**
+   * @brief Set of existing elements.
+   *
+   */
+  // std::set<std::pair<T, uid_t>> elements_;
+
+  /**
+   * @brief Removal set.
+   * It consists of elements that were removed.
+   * But there is still chance for them to be recovered.
+   *
+   */
+  // std::set<std::pair<T, uid_t>> tombstones_;
+
+  std::map<T, std::set<uid_t>> adds_;
+  std::map<T, std::set<uid_t>> removes_;
 };
 
 }  // namespace bustub
